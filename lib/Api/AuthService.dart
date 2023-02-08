@@ -48,7 +48,6 @@ class AuthService extends ChangeNotifier {
 
   Future register(
       String name,
-      File image,
       String dateNaissance,
       String sexe,
       // String pays,
@@ -59,7 +58,7 @@ class AuthService extends ChangeNotifier {
       String address) async {
     Dio.FormData data = Dio.FormData.fromMap({
       "userName": name,
-      //"avatar": Dio.MultipartFile.fromFile("dfghh", filename: "profil.png"),
+      //"avatar": Dio.MultipartFile.fromFile(image.path, filename: "profil.png"),
       "birthDay": dateNaissance,
       "sexe": sexe,
       "email": gmail,

@@ -14,6 +14,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:dio/dio.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -228,6 +230,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 value.data["user"]['_id']
                                                     .toString());
                                           }
+                                          showTopSnackBar(
+                                            context,
+                                            CustomSnackBar.success(
+                                              message: "connecté",
+                                            ),
+                                          );
+
                                           setState(() {
                                             _isLoading = false;
                                           });
@@ -235,7 +244,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           setState(() {
                                             _isLoading = false;
                                           });
-                                          print(e.response.data);
+                                          print(e);
                                         });
                                       },
                                 padding: EdgeInsets.only(

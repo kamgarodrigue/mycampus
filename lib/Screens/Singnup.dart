@@ -12,6 +12,8 @@ import 'package:mycampus/Widgets/Intput.dart';
 import 'package:intl/intl.dart';
 import 'package:awesome_dropdown/awesome_dropdown.dart';
 import 'package:mycampus/Widgets/Loader.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
 class SingUp extends StatefulWidget {
   Function goToLogin;
@@ -64,6 +66,9 @@ class _SingUpState extends State<SingUp> {
   Widget build(BuildContext context) {
     final heigth = MediaQuery.of(context).size.height;
     final widht = MediaQuery.of(context).size.width;
+    //setState(() {
+    //  isloaging = false;
+    // });
     return Scaffold(
         body: Container(
       decoration: const BoxDecoration(
@@ -151,6 +156,21 @@ class _SingUpState extends State<SingUp> {
           SizedBox(
             height: heigth * 0.05,
           ),
+          Image.asset(
+            "assets/images/logoApp.png",
+            height: heigth * 0.27,
+            width: widht * 0.58,
+          ),
+          Text(
+            "Enregistrement",
+            style: TextStyle(
+                color: kSecondaryColor,
+                fontSize: 30,
+                fontFamily: 'Roboto-MediumItalic'),
+            textAlign: TextAlign.center,
+          ),
+
+          /* 
           InkWell(
             onTap: () => getImage(ImageSource.gallery),
             child: Stack(
@@ -222,7 +242,7 @@ class _SingUpState extends State<SingUp> {
           ),
           SizedBox(
             height: heigth * 0.02,
-          ),
+          ),*/
           Padding(
             padding: EdgeInsets.only(
                 top: heigth * 0.01, left: widht * 0.04, right: widht * 0.04),
@@ -686,7 +706,6 @@ class _SingUpState extends State<SingUp> {
                       AuthService()
                           .register(
                               this.valuname['value'],
-                              _image,
                               valudate['value'],
                               valusexe['value'],
                               valuEmail['value'],
@@ -694,9 +713,16 @@ class _SingUpState extends State<SingUp> {
                               valutel['value'],
                               valuaddress['value'])
                           .then((value) {
+                        showTopSnackBar(
+                          context,
+                          CustomSnackBar.success(
+                            message: "compte crée",
+                          ),
+                        );
                         setState(() {
                           isloaging = false;
                         });
+                        Navigator.of(context).pop();
                       }).catchError((e) {
                         print(e.response.data);
                         setState(() {
