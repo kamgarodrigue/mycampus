@@ -85,6 +85,7 @@ class _HomePageState extends State<HomePage> {
                   SliverChildBuilderDelegate((BuildContext context, int index) {
                 return Container();
               }))*/
+
           SliverList(
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {
@@ -95,8 +96,9 @@ class _HomePageState extends State<HomePage> {
                   child: OpenContainer(
                     transitionType: _containerTransitionType,
                     transitionDuration: Duration(seconds: 1),
-                    openBuilder: (context, action) =>
-                        MapViewCampus(idcampus: campusProvider.list[index].id),
+                    openBuilder: (context, action) => MapViewCampus(
+                        idcampus: campusProvider.list[index].id,
+                        campus: campusProvider.list[index]),
                     closedBuilder: (context, action) => Container(
                       width: 400,
                       decoration: BoxDecoration(

@@ -18,17 +18,17 @@ class _SlidermainState extends State<Slidermain> {
   int _currentIndex = 0;
   List<Item> items = [
     Item(
-      "assets/images/customer-journey.png",
+      "assets/images/Frame 4.png",
       "une fois connecté vous avez la possibilité de poster  et vendre vos article .",
       "BOUTUTIQUE EN LIGNE",
     ),
     Item(
-      "assets/images/way.png",
+      "assets/images/Frame 4.png",
       "une fois connecté vous avez la possibilité de poster  et vendre vos article .",
       "LIVRAISON A DOMICILE",
     ),
     Item(
-      "assets/images/logoApp.png",
+      "assets/images/Frame 4 (2).png",
       "une fois connecté vous avez la possibilité de poster  et vendre vos article .",
       "METHODE DE PAYEMENT",
     )
@@ -49,10 +49,41 @@ class _SlidermainState extends State<Slidermain> {
     return Scaffold(
         backgroundColor: whiteColor,
         body: Container(
+          padding: EdgeInsets.only(
+            top: heigth * 0.05,
+          ),
           height: heigth,
           width: widht,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/images/introbg.png"))),
           child: Stack(
             children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  // color: Colors.white,
+                  height: 100,
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("My Campus",
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: "Roboto-Medium",
+                              color: whiteColor)),
+                      Image.asset(
+                        "assets/images/logoApp.png",
+                        height: 50,
+                        width: 50,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Padding(
                   padding: EdgeInsets.only(top: heigth * 0.1),
                   child: Container(
@@ -107,7 +138,7 @@ class _SlidermainState extends State<Slidermain> {
                 ),
               ),
               Positioned(
-                top: heigth * 0.87,
+                top: heigth * 0.82,
                 left: widht * 0.4,
                 right: widht * 0.03,
                 child: Row(
@@ -154,7 +185,7 @@ class _SlidermainState extends State<Slidermain> {
                           style: TextStyle(
                               fontSize: 16,
                               fontFamily: "Roboto-Medium",
-                              color: kPrimaryColors)),
+                              color: whiteColor)),
                     )
                   ],
                 ),

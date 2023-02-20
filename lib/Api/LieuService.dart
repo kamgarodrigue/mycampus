@@ -17,7 +17,7 @@ class LieuService extends ChangeNotifier {
   List get typerLieu => _typerLieu;
   Future<List<Lieu>> getLieu() async {
     Dio.Response response = await dio().get("lieu/");
-    //  print(response.data["response"]);
+    //print(response.data["response"]);
     return decodeListLieu(response.data["response"]);
   }
 

@@ -71,10 +71,6 @@ class _SingUpState extends State<SingUp> {
     // });
     return Scaffold(
         body: Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/bacground.png"),
-              fit: BoxFit.cover)),
       child: Padding(
         padding: EdgeInsets.only(top: heigth * 0.05),
         child: Column(
@@ -103,7 +99,7 @@ class _SingUpState extends State<SingUp> {
                 child: Container(
               child: Stack(
                 children: [
-                  activeStep == 0 ? bodyStep1(context) : bodyStep2(context),
+                  activeStep == 0 ? _bodyStep1(context) : bodyStep2(context),
                   isloaging
                       ? Loader(loadingTxt: "traitement de donné en cour")
                       : Container()
@@ -146,7 +142,7 @@ class _SingUpState extends State<SingUp> {
     );
   }
 
-  Widget bodyStep1(BuildContext context) {
+  Widget _bodyStep1(BuildContext context) {
     final heigth = MediaQuery.of(context).size.height;
     final widht = MediaQuery.of(context).size.width;
 
@@ -158,9 +154,10 @@ class _SingUpState extends State<SingUp> {
           ),
           Image.asset(
             "assets/images/logoApp.png",
-            height: heigth * 0.27,
-            width: widht * 0.58,
+            height: 100,
+            width: 100,
           ),
+          SizedBox(height: 32),
           Text(
             "Enregistrement",
             style: TextStyle(

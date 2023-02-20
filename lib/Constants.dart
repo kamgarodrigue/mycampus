@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 //couleur da l aplication
-const kPrimaryColors = Color.fromARGB(255, 70, 133, 59);
-const kContainerColors = Color.fromARGB(156, 60, 116, 51);
+const kPrimaryColors = Color.fromRGBO(13, 110, 253, 1);
+const kContainerColors = Color.fromRGBO(13, 110, 253, 0.8);
 
 const kSecondaryColor = Color.fromRGBO(2, 8, 33, 1);
 const kRed = Color.fromRGBO(245, 90, 90, 1);
@@ -30,8 +30,8 @@ Text label(double fontSize, String text, String fontFamily, Color color) {
 Text title(String text) {
   return Text(
     text,
-    style: TextStyle(
-        color: kPrimaryColors, fontSize: 30, fontFamily: 'Roboto-Black'),
+    style:
+        TextStyle(color: whiteColor, fontSize: 25, fontFamily: 'Roboto-Black'),
     textAlign: TextAlign.center,
   );
 }
@@ -39,8 +39,8 @@ Text title(String text) {
 Text subTitle(String text) {
   return Text(
     text,
-    style: TextStyle(
-        color: kSecondaryColor, fontSize: 16, fontFamily: 'Roboto-Light'),
+    style:
+        TextStyle(color: whiteColor, fontSize: 16, fontFamily: 'Roboto-Light'),
     textAlign: TextAlign.center,
   );
 }

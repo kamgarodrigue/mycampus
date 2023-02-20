@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mycampus/Api/AuthService.dart';
 import 'package:mycampus/Api/DioClient.dart';
+import 'package:mycampus/Constants.dart';
 import 'package:mycampus/Models/User.dart';
 import 'package:mycampus/Provider/AuthProvider.dart';
+import 'package:mycampus/Screens/MonCompte.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -50,11 +52,12 @@ class _AppDrawerState extends State<AppDrawer> {
                 color: Colors.white,
               ),
               child: Center(
-                  child: Stack(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 140,
-                    height: 140,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                         border: Border.all(
                             width: 4.0,
@@ -72,6 +75,14 @@ class _AppDrawerState extends State<AppDrawer> {
                                 NetworkImage(baseurl + authProvider.user.photo),
                             fit: BoxFit.cover)),
                   ),
+                  Text(
+                    authProvider.user.name,
+                    style: TextStyle(
+                        color: kBlack,
+                        fontSize: 20,
+                        fontFamily: 'Roboto-Medium'),
+                    textAlign: TextAlign.center,
+                  )
                 ],
               )),
             ),
@@ -80,8 +91,8 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
             InkWell(
               onTap: () {
-                /* Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MyAccount()));*/
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Moncompte()));
               },
               child: ListTile(
                 leading: const Icon(

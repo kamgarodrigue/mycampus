@@ -67,19 +67,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         Container(
                           height: heigth,
                           width: widht,
+                          padding: EdgeInsets.only(top: heigth * .30),
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image:
                                       AssetImage("assets/images/bacground.png"),
                                   fit: BoxFit.cover)),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.asset(
+                              /* Image.asset(
                                 "assets/images/logoApp.png",
                                 height: heigth * 0.27,
                                 width: widht * 0.58,
-                              ),
+                              ),*/
                               Text(
                                 "Connexion",
                                 style: TextStyle(
@@ -88,6 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fontFamily: 'Roboto-MediumItalic'),
                                 textAlign: TextAlign.center,
                               ),
+                              SizedBox(height: 16),
                               Padding(
                                 padding: EdgeInsets.only(
                                     top: heigth * 0.01,
@@ -176,6 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                 ),
                               ),
+                              SizedBox(height: 32),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -192,6 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fontFamily: 'Roboto-Light'),
                                 ),
                               ),
+                              SizedBox(height: 32),
                               Button(
                                 fontSize: 24,
                                 heigth: 50,
@@ -254,6 +258,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 raduis: 10,
                                 text: 'Se Connecter',
                               ),
+                              SizedBox(height: 32),
                               GestureDetector(
                                 onTap: () {
                                   this.setConexion();

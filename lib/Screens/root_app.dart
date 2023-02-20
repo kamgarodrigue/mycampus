@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mycampus/Constants.dart';
+import 'package:mycampus/Screens/Annonce.dart';
 import 'package:mycampus/Screens/HomePage.dart';
 import 'package:mycampus/Screens/MapView.dart';
 import 'package:mycampus/Screens/MapViewSearch.dart';
@@ -20,21 +21,31 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
       "icon": "assets/images/home-free-icon-font.png",
       "active_icon": "assets/images/home-free-icon-font (1).png",
       "page": HomePage(),
+      "text": "Menu"
+    },
+    {
+      "icon": "assets/images/doc.png",
+      "active_icon": "assets/images/search.png",
+      "page": Annonce(),
+      "text": "Annonces"
     },
     {
       "icon": "assets/images/panier1.png",
       "active_icon": "assets/images/panier.png",
       "page": HomePub(),
+      "text": "shop"
     },
     {
       "icon": "assets/images/carte (1).png",
       "active_icon": "assets/images/mapActive.jpg",
       "page": MapView(),
+      "text": "Navigation"
     },
     {
-      "icon": "assets/images/search.jpeg",
-      "active_icon": "assets/images/search.png",
+      "icon": "assets/images/search.png",
+      "active_icon": "assets/images/mapActive.jpg",
       "page": MapViewSearch(),
+      "text": "Recherche"
     },
   ];
 
@@ -139,20 +150,21 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
           padding: const EdgeInsets.only(
             left: 25,
             right: 25,
-            bottom: 15,
           ),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
                   barItems.length,
-                  (index) => BottomBarItem(
+                  (index) => Expanded(
+                          child: BottomBarItem(
                         barItems[index]["icon"],
+                        barItems[index]["text"],
                         isActive: activeTab == index,
                         activeColor: kPrimaryColors,
                         onTap: () {
                           onPageChanged(index);
                         },
-                      )))),
+                      ))))),
     );
   }
 }

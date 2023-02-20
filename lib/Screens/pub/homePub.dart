@@ -59,8 +59,8 @@ class _HomePubState extends State<HomePub> {
               bottom: TabBar(
                 physics: const ScrollPhysics(),
                 isScrollable: false,
-                labelColor: Theme.of(context).primaryColor,
-                indicatorColor: Theme.of(context).indicatorColor,
+                labelColor: kPrimaryColors,
+                indicatorColor: kSecondaryColor,
                 indicatorWeight: 5,
                 tabs: [
                   Tab(

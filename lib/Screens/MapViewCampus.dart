@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:mycampus/Api/localisation.dart';
 import 'package:mycampus/Constants.dart';
+import 'package:mycampus/Models/Campus.dart';
 import 'package:mycampus/Models/Instruction.dart';
 import 'package:mycampus/Models/Lieu.dart';
 import 'package:mycampus/Screens/DetailPlace.dart';
@@ -21,8 +22,9 @@ import 'package:mycampus/Api/MapApi.dart';
 
 class MapViewCampus extends StatefulWidget {
   final String idcampus;
+  final Campus campus;
 
-  const MapViewCampus({this.idcampus});
+  const MapViewCampus({this.idcampus, @required this.campus});
   @override
   _MapViewCampusState createState() => _MapViewCampusState();
 }
@@ -343,8 +345,10 @@ class _MapViewCampusState extends State<MapViewCampus> {
   @override
   void initState() {
     super.initState();
+    _initialLocation = CameraPosition(
+        target: LatLng(widget.campus.lat, widget.campus.long), zoom: 16);
 
-    /* RouteService().sharedPreferences().then((value) {
+    /*RouteService().sharedPreferences().then((value) {
       print(value.getString("route"));
       List route = json.decode(value.getString(""));
       if (!route.isEmpty) {
@@ -362,7 +366,6 @@ class _MapViewCampusState extends State<MapViewCampus> {
       }
     });*/
     //polylines[widget.polyline.polylineId] = widget.polyline;
-
     _getCurrentLocation();
   }
 
@@ -376,7 +379,9 @@ class _MapViewCampusState extends State<MapViewCampus> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    print(polylines.length.toString());
+    // print(polylines.length.toString());
+    // print("${widget.campus.lat} lst ${widget.campus.long}");
+
     final locat = context.watch<Localisation>();
     _getCurrentLocation();
     locat.locat.onLocationChanged().listen((pos) {
@@ -1159,13 +1164,23 @@ class _MapViewCampusState extends State<MapViewCampus> {
                             child: Icon(Icons.my_location),
                           ),
                           onTap: () {
-                            mapController.animateCamera(
-                              CameraUpdate.newCameraPosition(
-                                CameraPosition(
-                                  target: locat.location,
-                                  zoom: 18.0,
+                            setState(() {
+                              markers.add(Marker(
+                                markerId: MarkerId(widget.campus.id),
+                                position: LatLng(
+                                    widget.campus.lat, widget.campus.lat),
+                                infoWindow: InfoWindow(
+                                  title: '${widget.campus.intitule}',
+                                  snippet: '${widget.campus.description}',
                                 ),
-                              ),
+                                icon: BitmapDescriptor.defaultMarker,
+                              ));
+                            });
+                            mapController.animateCamera(
+                              CameraUpdate.newCameraPosition(CameraPosition(
+                                  target: LatLng(
+                                      widget.campus.lat, widget.campus.long),
+                                  zoom: 19)),
                             );
                           },
                         ),
