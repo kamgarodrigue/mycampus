@@ -20,10 +20,22 @@ class _DetailAnnoncesState extends State<DetailAnnonces> {
         elevation: 0,
         backgroundColor: whiteColor,
         centerTitle: false,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          "Titre de l’annonce",
-          style: TextStyle(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.green),
+        title: Row(
+          children: [
+            SizedBox(width: 10),
+
+            // crossAxisAlignment: CrossAxisAlignment.start,
+
+            Text(
+              'Titre de l\'annonce',
+              style: TextStyle(
+                  fontSize: 18,
+                  color: kFontlightColor,
+                  fontFamily: "Roboto-Black"),
+              overflow: TextOverflow.visible,
+            ),
+          ],
         ),
       ),
       body: Container(
@@ -34,37 +46,64 @@ class _DetailAnnoncesState extends State<DetailAnnonces> {
         child: ListView(
           padding: EdgeInsets.all(16),
           children: [
-            RichText(
-                text: TextSpan(
-                    children: [
-                  TextSpan(
-                      text: " il y’a une heure ",
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage("assets/images/userprofil.png"),
+                  radius: 20,
+                ),
+                SizedBox(width: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Recteur",
                       style: TextStyle(
-                          color: kBlack,
-                          fontSize: 15,
-                          fontFamily: 'Roboto-Light'))
-                ],
-                    text: "02 Fev. 2023",
-                    style: TextStyle(
-                        color: kBlack,
-                        fontSize: 15,
-                        fontFamily: 'Roboto-Regular'))),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            children: [
+                          TextSpan(
+                              text: " il y’a une heure ",
+                              style: TextStyle(
+                                  color: kBlack,
+                                  fontSize: 15,
+                                  fontFamily: 'Roboto-Light'))
+                        ],
+                            text: "02 Fev. 2023",
+                            style: TextStyle(
+                                color: kBlack,
+                                fontSize: 15,
+                                fontFamily: 'Roboto-Regular'))),
+                  ],
+                ),
+              ],
+            ),
             SizedBox(height: 16),
             RichText(
-                text: TextSpan(
-                    children: [
+              text: TextSpan(
+                text: "Source: ",
+                style: TextStyle(
+                  color: kBlack,
+                  fontSize: 15,
+                  fontFamily: 'Roboto-Regular',
+                ),
+                children: [
                   TextSpan(
-                      text: "Departement d'informatique",
-                      style: TextStyle(
-                          color: kBlack,
-                          fontSize: 15,
-                          fontFamily: 'Roboto-Light'))
-                ],
-                    text: "Source: ",
+                    text: "Département d'informatique",
                     style: TextStyle(
-                        color: kBlack,
-                        fontSize: 15,
-                        fontFamily: 'Roboto-Regular'))),
+                      color: kBlack,
+                      fontSize: 15,
+                      fontFamily: 'Roboto-Light',
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Container(
               child: GestureDetector(
                 onTap: () {
@@ -106,6 +145,71 @@ class _DetailAnnoncesState extends State<DetailAnnonces> {
                             fontFamily: "Roboto-Light"),
                         overflow: TextOverflow.visible,
                       ),
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.grey),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.image,
+                          color: Colors.blue,
+                        ),
+                        //SizedBox(width: 8.0),
+                        Text(
+                          "Screenshot",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                        ),
+                        //  SizedBox(width: 8.0),
+                        Icon(
+                          Icons.download_rounded,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.grey),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.save,
+                          color: Colors.blue,
+                        ),
+                        //SizedBox(width: 8.0),
+                        Text(
+                          "Telecharger...",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(width: 4.0),
+                        Icon(
+                          Icons.download_rounded,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

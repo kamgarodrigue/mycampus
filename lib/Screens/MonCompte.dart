@@ -28,15 +28,33 @@ class _MoncompteState extends State<Moncompte> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Moncompte()));
           },
-          child: ListTile(
-            leading: const Icon(
-              Icons.perm_identity_sharp,
-              color: Colors.cyan,
-            ),
-            title: Text(
-              "Indetification",
-              style: const TextStyle(),
-            ),
+          child: Column(
+            children: [
+              
+              const Divider(),
+              ListTile(
+                leading: const Icon(
+                  Icons.account_,
+                  color: Colors.cyan,
+                ),
+                title: const Text(
+                  "Mes informations",
+                  style: TextStyle(),
+                ),
+              ),
+              const Divider(),
+
+              ListTile(
+                leading: const Icon(
+                  Icons.perm_identity_sharp,
+                  color: Colors.cyan,
+                ),
+                title: const Text(
+                  "Identification",
+                  style: TextStyle(),
+                ),
+              ),
+            ],
           ),
         ),
       ]),
