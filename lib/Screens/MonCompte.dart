@@ -30,11 +30,9 @@ class _MoncompteState extends State<Moncompte> {
           },
           child: Column(
             children: [
-              
-              const Divider(),
               ListTile(
                 leading: const Icon(
-                  Icons.account_,
+                  Icons.person,
                   color: Colors.cyan,
                 ),
                 title: const Text(
@@ -43,7 +41,7 @@ class _MoncompteState extends State<Moncompte> {
                 ),
               ),
               const Divider(),
-
+              
               ListTile(
                 leading: const Icon(
                   Icons.perm_identity_sharp,
