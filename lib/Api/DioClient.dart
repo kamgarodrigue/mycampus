@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 
-var baseurl = "http://mycampus.cm/";
+var baseurl = "http://192.168.8.103:5000/";
 Dio dio() {
   Dio dio = new Dio();
-
-  //"http://192.168.43.45:5000/api/";
-  dio.options.baseUrl = "http://mycampus.cm/api/";
+//"http://mycampus.cm/api/";
+  dio.options.baseUrl = "http://192.168.8.103:5000/api/";
   dio.options.headers['content-Type'] = 'application/json';
   dio.options.connectTimeout = 5000;
   dio.options.receiveTimeout = 3000;

@@ -5,6 +5,7 @@ import 'package:mycampus/Api/CampusService.dart';
 import 'package:mycampus/Api/DioClient.dart';
 import 'package:mycampus/Constants.dart';
 import 'package:mycampus/Models/Campus.dart';
+import 'package:mycampus/Provider/AuthProvider.dart';
 import 'package:mycampus/Provider/CampusProvider.dart';
 import 'package:mycampus/Screens/DetailFaculte.dart';
 import 'package:mycampus/Screens/MapViewCampus.dart';
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     context.read<CampusProvider>().campusList();
+    context.read<AuthProvider>().getUser();
   }
 
   @override

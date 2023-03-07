@@ -245,6 +245,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                             _isLoading = false;
                                           });
                                         }).catchError((e) {
+                                          showTopSnackBar(
+                                            context,
+                                            CustomSnackBar.info(
+                                              message:
+                                                  "utilisateur non existant",
+                                            ),
+                                          );
                                           setState(() {
                                             _isLoading = false;
                                           });

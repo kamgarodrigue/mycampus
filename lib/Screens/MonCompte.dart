@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mycampus/Constants.dart';
+import 'package:mycampus/Screens/Identification.dart';
 
 class Moncompte extends StatefulWidget {
   Moncompte({Key key}) : super(key: key);
@@ -25,8 +26,8 @@ class _MoncompteState extends State<Moncompte> {
       body: Column(children: [
         InkWell(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Moncompte()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Identification()));
           },
           child: ListTile(
             leading: const Icon(

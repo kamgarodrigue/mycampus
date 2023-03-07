@@ -23,7 +23,7 @@ class AuthProvider extends ChangeNotifier {
           _user = User.fromJson(value["user"]);
           print(user.toJson());
           notifyListeners();
-        });
+        }).catchError(() {});
       },
     );
   }

@@ -99,7 +99,7 @@ class _SingUpState extends State<SingUp> {
                 child: Container(
               child: Stack(
                 children: [
-                  activeStep == 0 ? _bodyStep1(context) : bodyStep2(context),
+                  activeStep == 0 ? bodyStep1(context) : bodyStep2(context),
                   isloaging
                       ? Loader(loadingTxt: "traitement de donné en cour")
                       : Container()
@@ -142,7 +142,7 @@ class _SingUpState extends State<SingUp> {
     );
   }
 
-  Widget _bodyStep1(BuildContext context) {
+  Widget bodyStep1(BuildContext context) {
     final heigth = MediaQuery.of(context).size.height;
     final widht = MediaQuery.of(context).size.width;
 
@@ -540,7 +540,7 @@ class _SingUpState extends State<SingUp> {
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime(
-                      2000), //DateTime.now() - not to allow to choose before today.
+                      1970), //DateTime.now() - not to allow to choose before today.
                   lastDate: DateTime(2101));
 
               if (pickedDate != null) {
@@ -719,7 +719,7 @@ class _SingUpState extends State<SingUp> {
                         setState(() {
                           isloaging = false;
                         });
-                        Navigator.of(context).pop();
+                        // Navigator.of(context).pop();
                       }).catchError((e) {
                         print(e.response.data);
                         setState(() {

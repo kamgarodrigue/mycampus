@@ -4,8 +4,12 @@ import 'package:dio/dio.dart' as Dio;
 
 import 'package:flutter/cupertino.dart';
 import 'package:mycampus/Api/DioClient.dart';
+import 'package:mycampus/Models/User.dart';
+import 'package:mycampus/Screens/Identification.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 
 class AuthService extends ChangeNotifier {
   Future<SharedPreferences> sharedPreferences() async {
@@ -78,6 +82,36 @@ class AuthService extends ChangeNotifier {
     });
     // print(response.data.toString());
     return response;
+  }
+
+  Future Identification(User user, img) async {
+    Map<String, dynamic> data1 = {
+      "userID": user.id,
+      "birthDay": user.dateOfBirth,
+      "sexe": user.sexe,
+      "email": user.email,
+      "phone": user.telephone,
+      "address": user.address,
+      "faculte": user.faculte,
+      "departement": user.departement,
+    };
+    var request =
+        http.MultipartRequest("POST", Uri.parse(baseurl + "users/register"));
+
+    request.files.add(await http.MultipartFile.fromBytes(
+      "avatar",
+      img,
+      filename: "${user.name}.png",
+      contentType: MediaType("image", "png"),
+    ));
+
+    request.fields.addAll(data1.cast<String, String>());
+    var response = await request.send();
+    var responsed = await http.Response.fromStream(response);
+    final Responsedata = json.decode(responsed.body);
+    print(Responsedata.toString());
+
+    return responsed.body;
   }
 
   Future<void> logout() async {

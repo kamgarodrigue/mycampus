@@ -204,6 +204,7 @@ class _DetailfaculteState extends State<Detailfaculte>
                                     .getLieuByTypeAndCampus(
                                         widget.campus.id, e['_id'].toString());
                                 print(lieuProvider.listbytype);
+                                print(e['_id'].toString());
                               },
                               child: ListTile(
                                   /*leading: CircleAvatar(
