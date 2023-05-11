@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mycampus/Constants.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'Identification.dart';
 
 class Moncompte extends StatefulWidget {
   Moncompte({Key key}) : super(key: key);
@@ -30,26 +34,43 @@ class _MoncompteState extends State<Moncompte> {
           },
           child: Column(
             children: [
-              ListTile(
-                leading: const Icon(
-                  Icons.person,
-                  color: Colors.cyan,
-                ),
-                title: const Text(
-                  "Mes informations",
-                  style: TextStyle(),
+              InkWell(
+                onTap: () {
+                  /* Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Settings()));*/
+                },
+                child: ListTile(
+                  leading: const Icon(
+                    MdiIcons.cardAccountDetailsStar,
+                    color: Colors.cyan,
+                  ),
+                  title: const Text(
+                    "Mes informations",
+                    style: TextStyle(),
+                  ),
+                  trailing: const Icon(CupertinoIcons.forward),
                 ),
               ),
-              const Divider(),
-              
-              ListTile(
-                leading: const Icon(
-                  Icons.perm_identity_sharp,
-                  color: Colors.cyan,
-                ),
-                title: const Text(
-                  "Identification",
-                  style: TextStyle(),
+              const SizedBox(
+                height: 5.0,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Identification()));
+                },
+                child: ListTile(
+                  leading: const Icon(
+                    Icons.perm_identity_sharp,
+                    color: Colors.cyan,
+                  ),
+                  title: const Text(
+                    "Identification",
+                    style: TextStyle(),
+                  ),
+                  trailing: const Icon(CupertinoIcons.forward),
                 ),
               ),
             ],

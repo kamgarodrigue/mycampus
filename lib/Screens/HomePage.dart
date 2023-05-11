@@ -9,7 +9,7 @@ import 'package:mycampus/Provider/CampusProvider.dart';
 import 'package:mycampus/Screens/DetailFaculte.dart';
 import 'package:mycampus/Screens/MapViewCampus.dart';
 import 'package:mycampus/Screens/home_drawer.dart';
-
+// ignore: depend_on_referenced_packages
 import 'package:latlong/latlong.dart';
 import 'package:provider/provider.dart';
 import 'package:animations/animations.dart';
